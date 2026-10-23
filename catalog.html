@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Каталог букетов — Flora</title>
+<meta name="description" content="Каталог букетов Flora: розы, пионы, тюльпаны, эустомы, ромашки. Фильтры по цветам, поводу и цене.">
+<link rel="canonical" href="https://tonyapest.github.io/catalog.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Каталог букетов — Flora">
+<meta property="og:description" content="Розы, пионы, тюльпаны, эустомы, ромашки с доставкой по Туле.">
+<meta property="og:url" content="https://tonyapest.github.io/catalog.html">
+<meta property="og:image" content="https://tonyapest.github.io/assets/og.svg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><circle cx='20' cy='20' r='18' fill='%23c4285f'/><circle cx='20' cy='14' r='6' fill='%23fff'/><circle cx='14' cy='24' r='6' fill='%23fff'/><circle cx='26' cy='24' r='6' fill='%23fff'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700&family=Tenor+Sans&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">К содержимому</a>
+<header class="header">
+  <div class="wrap header-inner">
+    <a class="logo" href="index.html"><span class="logo-mark"></span><span>Flora</span></a>
+    <nav class="nav" aria-label="Основное меню">
+      <a href="catalog.html" aria-current="page">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+    <div class="tools"><a class="tool" href="cart.html">Корзина <span class="cart-count" id="cart-count">0</span></a></div>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <h1>Каталог букетов</h1>
+  <form class="filters" id="filters" aria-label="Фильтры каталога">
+    <label>Цветы
+      <select id="f-flower">
+        <option value="">Все</option>
+        <option value="rozy">Розы</option>
+        <option value="pioni">Пионы</option>
+        <option value="tyulpany">Тюльпаны</option>
+        <option value="eustomy">Эустомы</option>
+        <option value="romashki">Ромашки</option>
+        <option value="ekzotika">Экзотика</option>
+      </select>
+    </label>
+    <label>Повод
+      <select id="f-occ">
+        <option value="">Любой</option>
+        <option value="svadba">Свадьба</option>
+        <option value="den-rozhdeniya">День рождения</option>
+        <option value="yubilej">Юбилей</option>
+        <option value="priznanie">Признание</option>
+        <option value="izvinenie">Извинение</option>
+        <option value="podderzhka">Поддержка</option>
+      </select>
+    </label>
+    <label>Цена
+      <select id="f-price">
+        <option value="">Любая</option>
+        <option value="low">До 3000 ₽</option>
+        <option value="mid">3000–5000 ₽</option>
+        <option value="high">От 5000 ₽</option>
+      </select>
+    </label>
+    <label>Сортировка
+      <select id="f-sort">
+        <option value="">По популярности</option>
+        <option value="asc">Сначала дешевле</option>
+        <option value="desc">Сначала дороже</option>
+      </select>
+    </label>
+    <button class="btn ghost" type="button" id="f-reset">Сбросить</button>
+  </form>
+  <p class="count-line" id="count" aria-live="polite"></p>
+  <div class="grid" id="catalog-grid"></div>
+  <div class="empty" id="no-results" hidden>
+    <p><strong>По выбранным условиям букетов нет.</strong></p>
+    <button class="btn" type="button" id="f-reset2">Сбросить фильтры</button>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div><strong>Flora</strong><p>Дарим радость через цветы с 2010 года.</p></div>
+    <div><h3>Магазин</h3><ul><li><a href="catalog.html">Каталог</a></li><li><a href="about.html">О нас</a></li><li><a href="contacts.html">Контакты</a></li></ul></div>
+    <div><h3>Контакты</h3><ul><li>г. Тула, ул. Цветочная, 15</li><li><a href="tel:+74951234567">+7 (495) 123-45-67</a></li><li><a href="mailto:info@flora.ru">info@flora.ru</a></li></ul></div>
+  </div>
+  <div class="wrap footer-bottom"><span>© 2026 Flora</span><span>Учебный проект</span></div>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

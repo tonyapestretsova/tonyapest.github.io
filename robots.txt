@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /cart.html
+Sitemap: https://tonyapest.github.io/sitemap.xml

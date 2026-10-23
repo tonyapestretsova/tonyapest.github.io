@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Корзина и оформление заказа — Flora</title>
+<meta name="description" content="Корзина Flora: проверьте состав заказа и оформите доставку.">
+<link rel="canonical" href="https://tonyapest.github.io/cart.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Корзина — Flora">
+<meta property="og:description" content="Оформление заказа с доставкой по Туле.">
+<meta property="og:url" content="https://tonyapest.github.io/cart.html">
+<meta property="og:image" content="https://tonyapest.github.io/assets/og.svg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><circle cx='20' cy='20' r='18' fill='%23c4285f'/><circle cx='20' cy='14' r='6' fill='%23fff'/><circle cx='14' cy='24' r='6' fill='%23fff'/><circle cx='26' cy='24' r='6' fill='%23fff'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700&family=Tenor+Sans&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">К содержимому</a>
+<header class="header">
+  <div class="wrap header-inner">
+    <a class="logo" href="index.html"><span class="logo-mark"></span><span>Flora</span></a>
+    <nav class="nav" aria-label="Основное меню">
+      <a href="catalog.html">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+    <div class="tools"><a class="tool" href="cart.html" aria-current="page">Корзина <span class="cart-count" id="cart-count">0</span></a></div>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <h1>Корзина</h1>
+  <div class="cart-layout">
+    <div>
+      <div id="cart-root" aria-live="polite"></div>
+      <div id="promo-box"></div>
+    </div>
+    <div>
+      <h2>Оформление заказа</h2>
+      <form class="form" id="checkout-form" novalidate>
+        <label>Ваше имя<input id="cname" type="text" autocomplete="name" required></label>
+        <label>Телефон<input id="cphone" type="tel" autocomplete="tel" placeholder="+7 900 123-45-67" required></label>
+        <label>Email<input id="cemail" type="email" autocomplete="email" required></label>
+        <label>Доставка
+          <select id="delivery">
+            <option value="800">Курьером по городу — 800 ₽</option>
+            <option value="1300">Срочная (2 часа) — 1 300 ₽</option>
+            <option value="0">Самовывоз — бесплатно</option>
+          </select>
+        </label>
+        <label id="address-row" hidden>Адрес доставки<input id="address" type="text" autocomplete="street-address"></label>
+        <label>Дата доставки<input id="ddate" type="date" required></label>
+        <fieldset>
+          <legend>Оплата</legend>
+          <label class="radio"><input type="radio" name="pay" value="card" checked> Картой онлайн</label>
+          <label class="radio"><input type="radio" name="pay" value="cash"> Наличными при получении</label>
+          <label class="radio"><input type="radio" name="pay" value="sbp"> СБП</label>
+        </fieldset>
+        <label>Пожелания<textarea id="comment" rows="3"></textarea></label>
+        <p class="error" id="form-error" role="alert"></p>
+        <button class="btn" type="submit">Оформить заказ</button>
+      </form>
+    </div>
+  </div>
+  <dialog id="done-dlg" aria-labelledby="done-h">
+    <div class="dlg">
+      <h2 id="done-h">Заказ оформлен!</h2>
+      <p>Менеджер свяжется с вами в течение 30 минут.</p>
+      <p>Номер заказа:</p>
+      <p class="order-no" id="done-no"></p>
+      <button class="btn" type="button" data-close>Понятно</button>
+    </div>
+  </dialog>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div><strong>Flora</strong><p>Дарим радость через цветы с 2010 года.</p></div>
+    <div><h3>Магазин</h3><ul><li><a href="catalog.html">Каталог</a></li><li><a href="about.html">О нас</a></li><li><a href="contacts.html">Контакты</a></li></ul></div>
+    <div><h3>Контакты</h3><ul><li>г. Тула, ул. Цветочная, 15</li><li><a href="tel:+74951234567">+7 (495) 123-45-67</a></li><li><a href="mailto:info@flora.ru">info@flora.ru</a></li></ul></div>
+  </div>
+  <div class="wrap footer-bottom"><span>© 2026 Flora</span><span>Учебный проект</span></div>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

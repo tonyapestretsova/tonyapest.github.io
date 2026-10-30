@@ -5,6 +5,7 @@
 
   const $ = (s, r=document) => r.querySelector(s);
   const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+  const ROOT = document.body.dataset.root || "";
   const fmt = n => n.toLocaleString("ru-RU") + " ₽";
   const read = (k, def) => { try { return JSON.parse(localStorage.getItem(k)) ?? def; } catch { return def; } };
   const write = (k, v) => localStorage.setItem(k, JSON.stringify(v));
@@ -34,10 +35,10 @@
     const el = document.createElement("article");
     el.className = "card";
     el.innerHTML = `
-      <a class="card-img" href="product.html?id=${p.id}" aria-label="${p.name}">${p.emoji}</a>
+      <a class="card-img" href="${ROOT}bukety/${p.id}.html" aria-label="${p.name}">${p.emoji}</a>
       <div class="card-body">
         ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
-        <h3><a href="product.html?id=${p.id}">${p.name}</a></h3>
+        <h3><a href="${ROOT}bukety/${p.id}.html">${p.name}</a></h3>
         <p>${p.desc}</p>
         <div class="price-row">
           <span class="price">${fmt(p.price)}</span>
@@ -97,6 +98,7 @@
   }
 
   // ---------- Карточка ----------
+  // Старый адрес product.html?id=... перенаправляет на страницу товара с ЧПУ
   function renderProduct(){
     const root = $("#product-root");
     if(!root) return;
@@ -106,32 +108,23 @@
       root.innerHTML = `<p class="lead">Букет не найден. <a href="catalog.html">Вернуться в каталог</a>.</p>`;
       return;
     }
-    document.title = p.name + " — Flora";
-    $("#crumb-name").textContent = p.name;
-    root.innerHTML = `
-      <div class="product">
-        <div class="product-art" aria-hidden="true">${p.emoji}</div>
-        <div>
-          <h1>${p.name}</h1>
-          <p class="lead">${p.desc}</p>
-          <div class="price-row">
-            <span class="price">${fmt(p.price)}</span>
-            ${p.old ? `<del>${fmt(p.old)}</del>` : ""}
-            ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
-          </div>
-          <dl class="spec">
-            <dt>Доставка</dt><dd>По городу от 800 ₽, срочная — 1 300 ₽</dd>
-            <dt>Сохранность</dt><dd>3–7 дней</dd>
-            <dt>Поводы</dt><dd>${p.occ.join(", ")}</dd>
-          </dl>
-          <div class="actions">
-            <button class="btn" type="button" data-add="${p.id}">Добавить в корзину</button>
-            <a class="btn ghost" href="cart.html">Перейти в корзину</a>
-          </div>
-        </div>
-      </div>`;
-    const rel = $("#related-grid");
-    PRODUCTS.filter(x => x.id !== p.id).slice(0,4).forEach(x => rel.appendChild(productCard(x)));
+    location.replace("bukety/" + p.id + ".html");
+  }
+
+  function renderRelated(){
+    const r = $("#related-grid[data-exclude]");
+    if(!r) return;
+    PRODUCTS.filter(x => x.id !== r.dataset.exclude).slice(0,4).forEach(x => r.appendChild(productCard(x)));
+  }
+
+  function bindBurger(){
+    const b = $(".burger"), n = $("#site-nav");
+    if(!b || !n) return;
+    b.addEventListener("click", () => {
+      const open = n.classList.toggle("open");
+      b.setAttribute("aria-expanded", open);
+      b.textContent = open ? "✕" : "☰";
+    });
   }
 
   // ---------- Корзина ----------
@@ -220,7 +213,9 @@
     renderPopular();
     renderCatalog();
     renderProduct();
+    renderRelated();
     renderCart();
+    bindBurger();
     bindAddButtons();
     bindDialogClose();
 

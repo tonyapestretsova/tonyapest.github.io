@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /cart.html
-Sitemap: https://tonyapest.github.io/sitemap.xml
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&fbclid&from /
+Sitemap: https://tonyapestretsova.github.io/tonyapest.github.io/sitemap.xml
